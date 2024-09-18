@@ -1,5 +1,5 @@
 import markdownToHtml from "@/src/lib/markdownToHtml";
-import { getPostBySlug } from "@/src/lib/Posts/api";
+import { getAllPosts, getPostBySlug } from "@/src/lib/Posts/api";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -23,6 +23,15 @@ export function generateMetadata({ params }: Params): Metadata {
   };
 }
 
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const posts = getAllPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
 export default async function Post({ params }: Params) {
   const post = getPostBySlug(params.slug);
 
@@ -35,7 +44,7 @@ export default async function Post({ params }: Params) {
   return (
     <div className="grow flex justify-center">
       <article
-        className="min-w-0 max-w-192 w-full prose prose-zinc dark:prose-invert border-2 border-white p-4"
+        className="min-w-0 max-w-192 w-full prose prose-zinc dark:prose-invert border-2 p-4"
         dangerouslySetInnerHTML={{ __html: content }}
       ></article>
     </div>

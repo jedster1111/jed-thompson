@@ -9,7 +9,7 @@ type NavbarLinkProps = {
 
 const NavbarLink = ({ href, children }: NavbarLinkProps) => {
   return (
-    <Link className="flex justify-center p-2 m-2 border-2 border-white rounded min-w-24" href={href}>
+    <Link className="flex justify-center p-2 m-2 border-2 rounded min-w-24" href={href}>
       {children}
     </Link>
   );
