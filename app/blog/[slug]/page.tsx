@@ -44,7 +44,7 @@ export default async function Post({ params }: Params) {
   return (
     <div className="grow flex justify-center">
       <article
-        className="min-w-0 max-w-192 w-full prose prose-zinc dark:prose-invert border-2 p-4"
+        className="min-w-0 max-w-3xl w-full prose prose-zinc dark:prose-invert border-2 p-4"
         dangerouslySetInnerHTML={{ __html: content }}
       ></article>
     </div>
