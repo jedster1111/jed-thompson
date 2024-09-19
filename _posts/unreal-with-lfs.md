@@ -223,6 +223,16 @@ Once created, you can click the "Repos" button to see your empty repository.
 
 ### Let's push
 
+Before we push, there's a configuration change you need to make to avoid an issue.  
+See [this thread](https://github.com/git-lfs/git-lfs/issues/4655) for a discussion around it.
+
+```sh
+git config http.version HTTP/1.1
+
+# If you're worried you might forget to set this in future projects, you can set the config globally.
+git config --global http.version HTTP/1.1
+```
+
 On your empty "Repos" page, you can find instructions on how to push to your remote.  
 Make sure you are using HTTPS to setup your remote, as Git LFS doesn't have good support for SSH unfortunately.  
 
